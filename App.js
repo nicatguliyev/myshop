@@ -4,6 +4,8 @@ import axios from 'axios';
 import WelcomeScreen from './screens/WelcomeScreen';
 import SignInScreen from './screens/SignInScreen';
 import MyStack from './MyStack';
+import HomeScreen from './screens/HomeScreen';
+import CarouselScreen from './screens/CarouselScreen';
 
 
 
@@ -21,7 +23,9 @@ const App = () => {
 
   return (
     //  <WelcomeScreen />
-      <MyStack />
+      // <MyStack />
+      <HomeScreen />
+      // <CarouselScreen />
   );
 }
 

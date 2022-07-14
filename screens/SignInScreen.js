@@ -6,34 +6,28 @@ import SignInButton from '../components/SignInButton';
 import axios from 'axios';
 import Toast from 'react-native-simple-toast';
 
-
-
-
 const fetchUsers = async (username, password) => {
 
     Keyboard.dismiss();
-    const response = await axios.get(`https://bcd9-212-47-141-151.eu.ngrok.io/users?email=${username}&password=${password}`);
+    const response = await axios.get(`https://7985-93-88-93-8.ngrok.io/users?email=${username}&password=${password}`);
     return response.data;
 }
 
 const checkUser = async (username) => {
-    const response = await axios.get(`https://bcd9-212-47-141-151.eu.ngrok.io/users?email=${username}`);
+    const response = await axios.get(`https://7985-93-88-93-8.ngrok.io/users?email=${username}`);
     return response.data;
 }
 
 const SignInScreen = ({ navigation }) => {
-
+    
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [invisible, setInvisible] = useState(true);
     const [visibleIndicator, setVisibleIndicator] = useState(false);
 
-    useEffect(() => {console.log("Salam")}, []);
-
     const handleLogin = async (username, password) => {
 
-        if (username == '' || password == '') {
-           
+        if (username == '' || password == '') {      
             Toast.showWithGravity("Fill all fields", Toast.SHORT, Toast.BOTTOM);
         }
         else {
@@ -46,15 +40,12 @@ const SignInScreen = ({ navigation }) => {
             }
             else {
                 const users2 = await fetchUsers(username, password);
-
                 if (users2.length == 0) {
                     Toast.showWithGravity("Password is wrong!", Toast.SHORT, Toast.BOTTOM);
                 }
                 else {
                     Toast.showWithGravity("Login is successfull", Toast.SHORT, Toast.BOTTOM);
-
                 }
-
             }
             setVisibleIndicator(false);
         }
@@ -71,11 +62,11 @@ const SignInScreen = ({ navigation }) => {
                 />
             </TouchableOpacity>
 
-            <Text style={[styles.welcomeTxt, { marginTop: 80 }]}>Welcome</Text>
+            <Text style={[styles.welcomeTxt, { marginTop: 60 }]}>Welcome</Text>
             <Text style={[styles.welcomeTxt, { marginTop: 5, }]}>back!</Text>
             <Text style={styles.inputHeader}>Email</Text>
             <TextInput
-                style={{ borderBottomColor: "#bfbfbf", borderBottomWidth: 1, marginTop: 5, height: 50}}
+                style={{ borderBottomColor: "#bfbfbf", borderBottomWidth: 1, marginTop: 5, height: 45}}
                 color="black"
                 fontSize={20}
                 placeholder="Example@gmail.com"
@@ -88,7 +79,7 @@ const SignInScreen = ({ navigation }) => {
             <View>
                 <View style={{ flexDirection: "row", alignItems: 'center', marginTop: 5,}}>
                     <TextInput
-                        style={{ width: "90%", height: 50}}
+                        style={{ width: "90%", height: 45}}
                         color="black"
                         fontSize={20}
                         placeholder="Enter your password"
@@ -123,7 +114,11 @@ const SignInScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     constainer: {
-        flex: 1, backgroundColor: "white", justifyContent: "center", paddingLeft: 30, paddingRight: 30,
+        flex: 1, 
+        backgroundColor: "white", 
+        justifyContent: "center", 
+        paddingLeft: 30,
+        paddingRight: 30,
     },
     welcomeTxt: {
         color: "black",
